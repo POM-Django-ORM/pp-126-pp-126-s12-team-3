@@ -1,0 +1,15 @@
+{
+    "tests": [
+      {
+        "name": "Run Django tests",
+        "setup": "pip install -r requirements.txt",
+        "run": "python manage.py test",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 100
+      }
+    ]
+  }
+  
