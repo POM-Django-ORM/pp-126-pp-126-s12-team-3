@@ -15,8 +15,8 @@ class CustomUser(AbstractBaseUser):
     middle_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     password = models.CharField(max_length=128) 
-    created_at = models.DateTimeField(default=timezone.now)
-    updated_at = models.DateTimeField(default=timezone.now)
+    created_at = models.DateTimeField(default=lambda: timezone.now())
+    updated_at = models.DateTimeField(default=lambda: timezone.now())
     role = models.IntegerField(choices=ROLE_CHOICES, default=0)
     is_active = models.BooleanField(default=False)
 
@@ -27,8 +27,10 @@ class CustomUser(AbstractBaseUser):
     def __str__(self):
         return (
             f"'id': {self.id}, 'first_name': '{self.first_name}', 'middle_name': '{self.middle_name}', "
-            f"'last_name': '{self.last_name}', 'email': '{self.email}', 'created_at': {self.created_at}, "
-            f"'updated_at': {self.updated_at}, 'role': {self.role}, 'is_active': {self.is_active}"
+            f"'last_name': '{self.last_name}', 'email': '{self.email}', "
+            f"'created_at': {int(self.created_at.timestamp())}, "
+            f"'updated_at': {int(self.updated_at.timestamp())}, "
+            f"'role': {self.role}, 'is_active': {self.is_active}"
         )
 
     def __repr__(self):

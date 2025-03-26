@@ -8,7 +8,7 @@ class Author(models.Model):
     patronymic = models.CharField(max_length=20)
 
     def __str__(self):
-        return f"'id': '{self.id}', 'name': '{self.name}', 'surname': '{self.surname}', 'patronymic': '{self.patronymic}'"
+        return f"'id': {self.id}, 'name': '{self.name}', 'surname': '{self.surname}', 'patronymic': '{self.patronymic}'"
 
     def __repr__(self):
         return f"Author(id={self.id})"
@@ -59,4 +59,4 @@ class Author(models.Model):
 
     @staticmethod
     def get_all():
-        return Author.objects.all()
+        return list(Author.objects.all())
